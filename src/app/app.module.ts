@@ -11,6 +11,9 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
    declarations: [
       AppComponent,
@@ -22,7 +25,9 @@ import { ErrorInterceptorProvider } from './_services/error.interceptor';
       BrowserModule,
       AppRoutingModule,
       HttpClientModule,
-      FormsModule
+      FormsModule,
+      BrowserAnimationsModule, // required animations module for Toastr
+      ToastrModule.forRoot() // ToastrModule 
    ],
    providers: [
       AuthService,

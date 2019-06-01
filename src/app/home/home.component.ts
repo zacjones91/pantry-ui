@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -9,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 export class HomeComponent implements OnInit {
   registerMode = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private toastr: ToastrService) { }
 
   ngOnInit() {
   }
