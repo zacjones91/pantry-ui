@@ -13,6 +13,7 @@ import { ErrorInterceptorProvider } from './_services/error.interceptor';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { BsDropdownModule } from 'ngx-bootstrap';
 
 @NgModule({
    declarations: [
@@ -27,7 +28,8 @@ import { ToastrModule } from 'ngx-toastr';
       HttpClientModule,
       FormsModule,
       BrowserAnimationsModule, // required animations module for Toastr
-      ToastrModule.forRoot() // ToastrModule 
+      ToastrModule.forRoot(), // ToastrModule 
+      BsDropdownModule.forRoot() // ngx bootstrap's dropdown module
    ],
    providers: [
       AuthService,
