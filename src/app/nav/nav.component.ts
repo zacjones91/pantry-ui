@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -10,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 export class NavComponent implements OnInit {
   model: any = {};
 
-  constructor(public authService: AuthService, private toastr: ToastrService) { }
+  constructor(public authService: AuthService, private toastr: ToastrService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -20,6 +21,8 @@ export class NavComponent implements OnInit {
       this.toastr.success('Logged in successfully.', 'Welcome!');
     }, error => {
       this.toastr.error(error, 'Uh oh...');
+    }, () => {
+      this.router.navigate(['/pantry'])
     })
   }
 
@@ -30,6 +33,7 @@ export class NavComponent implements OnInit {
   logout() {
     localStorage.removeItem('token');
     this.toastr.warning('You have been logged out.', 'Goodbye!');
+    this.router.navigate(['/home']);
   }
 
 }
