@@ -19,6 +19,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
+import { AuthGuard } from './_guards/auth.guard';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { appRoutes } from './routes';
    ],
    providers: [
       AuthService,
-      ErrorInterceptorProvider
+      ErrorInterceptorProvider,
+      AuthGuard
    ],
    bootstrap: [
       AppComponent
