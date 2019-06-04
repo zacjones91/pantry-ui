@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -13,23 +14,24 @@ export class RegisterComponent implements OnInit {
   @Output() cancelRegister = new EventEmitter();
   model: any = {};
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private toastr: ToastrService) { }
 
   ngOnInit() {
   }
 
   register() {
     this.authService.register(this.model).subscribe(() => {
-      console.log("registration successful")
+      this.toastr.success("Registration successful.", "Success!")
     }, error => {
-      console.log(error);
+      this.toastr.error(error, "Uh oh...");
     })
   }
 
   cancel() {
     // we can emit anything - can be an object or something as simple as a boolean value
     this.cancelRegister.emit(false);
-    console.log('cancelled');
+    console.log('Registration cancelled.');
   }
+
 
 }
